@@ -34,6 +34,15 @@ faqs = [
 
 
 
+import streamlit as st
+import requests
+
+st.title("AI FAQs Chatbot")
+
+question = st.text_input("Ask a question:")
+if st.button("Submit"):
+    response = requests.post("http://localhost:5000/chat", json={"question": question})
+    st.write(response.json()["answer"])
 
 
 
